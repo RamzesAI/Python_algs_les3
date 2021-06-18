@@ -1,0 +1,50 @@
+'''
+6. В одномерном массиве найти сумму элементов, находящихся между минимальным и максимальным элементами.
+Сами минимальный и максимальный элементы в сумму не включать.
+'''
+import random
+rand_ls = []
+for i in range(20):
+    el = int(random.randint(1, 100))
+    rand_ls.append(el)
+
+# Ищу максимальный элемент и его позицию в массиве
+max_el = rand_ls[0] # присваиваю значение максимальному элементу
+count_max_el = 0 # счетчик максимальных элементов
+count_el = 0 # счетчик всех элементов
+
+for j in rand_ls:
+    count_el += 1
+    if j > max_el:
+        max_el = j
+        count_max_el = count_el
+max_index = count_max_el - 1
+
+# Ищу минимальный элемент и его позицию в массиве
+min_el = rand_ls[0]
+count_min_el = 0
+count_el_1 = 0
+
+for k in rand_ls:
+    count_el_1 += 1
+    if k < min_el:
+        min_el = k
+        count_min_el = count_el_1
+min_index = count_min_el - 1
+
+
+print(f'Массив со значениями: {rand_ls}\n')
+print(f'Максимальный элемент и его индекс: {max_el}, {max_index + 1}\n')
+print(f'Минимальный элемент и его индекс:  {min_el}, {min_index + 1}\n')
+
+# Нахожу сумму элементов между максимальным и минимальным значением
+sum_el = 0
+if max_index > min_index:
+    for i in range(min_index + 1, max_index):
+        sum_el += rand_ls[i]
+    print(f'Сумма элементов: {sum_el}')
+
+if max_index < min_index:
+    for i in range(max_index + 1, min_index):
+        sum_el += rand_ls[i]
+    print(f'Сумма элементов: {sum_el}')
