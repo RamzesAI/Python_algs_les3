@@ -1,0 +1,34 @@
+'''
+Задание 4. Определить, какое число в массиве встречается чаще всего.
+'''
+import random
+print('')
+## генерация списка случайных чисел
+rand_ls = []
+for i in range(40):
+    el = int(random.randint(1, 10))
+    rand_ls.append(el)
+print(rand_ls)
+
+## создаю списки для уникальных значений и количества повторений
+ls_unique_num = [] # список уникальных значений
+ls_repeat_num = [] # количество повторений в массиве
+
+for j in rand_ls:
+    a = rand_ls.count(j)
+    if j not in ls_unique_num: ## если элемент не в списке уникальных значений
+        ls_unique_num.append(j) ## добавляю его в список уникальных значений
+        ls_repeat_num.append(a) ## количество повторений добавляю в список, созданный для этих значений
+
+
+## по соотвествию элементов в списках нахожу индексы
+
+count_el = 0 ## общий счетчик элементов
+count_el_max = 0 ## счетчик максимальных элементов
+max_el = ls_repeat_num[0] ## устанавливаю максимальное значение для списка с повторениями
+for k in ls_repeat_num:
+    count_el += 1
+    if k > max_el:
+        max_el = k
+        count_el_max = count_el
+print(f'Чаще всего встречается: {ls_unique_num[count_el_max - 1]}')

@@ -1,0 +1,37 @@
+'''
+Задание 9. Найти максимальный элемент среди минимальных элементов столбцов матрицы.
+'''
+import random
+total_matrix = []
+n = 10
+print('Исходная матрица:')
+for i in range(n):
+    print('')
+    el_list = []
+    for j in range(n):
+        a = random.randint(1, 100)
+        el_list.append(a)
+        print('%4d' % a, end='')
+    total_matrix.append(el_list)
+print('')
+
+print('')
+# Для удобства посчета минимальных элементов, переворачиваю матрицу. Теперь столбцы - это строки.
+z = 0
+tran_total_matrix = []
+for i in range(n):
+    tran_el_list = []
+    for j in range(n):
+        b = total_matrix[j][i]
+        tran_el_list.append(b)
+    tran_total_matrix.append(tran_el_list)
+
+
+# Минимальные элементы помещаю в список
+min_el_list = []
+for i in tran_total_matrix:
+    min_el = min(i)
+    min_el_list.append(min_el)
+
+print(f'Минимальные элементы всех столбцов: {min_el_list}')
+print(f'Максимальный элемент среди минимальных элементов столбцов матрицы: {max(min_el_list)}')
